@@ -21,9 +21,23 @@
         </div>
 
         <div class="row">
-          <div class="col">
-          
-          </div>
+            <div class="col">
+                {% if pagination is not empty %}
+                    <h1>Search results ({{pagination.totalItemCount}}) </h1>
+                    <hr>
+                    <ul class="list-group my-4">
+                        {% for item in pagination %}
+                            <li class="list-group-item list-group-item-action">
+                                {{item.title}} ({{item.category}})
+                            </li>
+                        {% endfor %}
+                    </ul>
+
+                    {{ knp_pagination_render(pagination, null, {}, {
+                        'align': 'center'
+                    })}}
+                {% endif %}
+            </div>
         </div>
 
     </div>
